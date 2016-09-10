@@ -1,0 +1,98 @@
+{
+    "id": "net.weejewel.xboxone",
+    "name": {
+        "en": "Xbox One"
+    },
+    "version": "1.0.0",
+    "compatibility": "0.x || 1.x",
+    "author": {
+        "name": "Emile Nijssen",
+        "email": "emilenijssen@gmail.com"
+    },
+    "images": {
+	    "large": "/assets/images/large.png",
+	    "small": "/assets/images/small.png"
+    },
+    "category": [ "appliances" ],
+    "description": {
+	    "en": "Power On your Xbox One"
+    },
+    "drivers": [
+	    {
+		    "id": "xboxone",
+		    "name": {
+			    "en": "Xbox One"
+		    },
+		    "images": {
+			    "large": "/drivers/xboxone/assets/images/large.png",
+			    "small": "/drivers/xboxone/assets/images/small.png"
+		    },
+		    "class": "other",
+		    "capabilities": [ "onoff" ],
+		    "mobile": {
+			    "components": [
+				    {
+					    "id": "icon",
+					    "capabilities": [ "onoff" ]
+				    },
+				    {
+					    "id": "toggle",
+					    "capabilities": [ "onoff" ]
+				    }
+			    ]
+		    },
+		    "pair": [
+			    {
+				    "id": "index"
+			    }
+		    ],
+		    "settings": [
+			    {
+                    "type": "group",
+                    "label": {
+                        "en": "Xbox One"
+                    },
+                    "children": [
+		                {
+		                    "id": "address",
+		                    "type": "text",
+		                    "value": "",
+		                    "label": {
+		                        "en": "Address",
+		                        "nl": "Adres"
+		                    },
+		                    "hint": {
+			                    "en": "On your Xbox, go to Settings > Network > Network Settings > Advanced Settings"
+		                    }
+		                },
+		                {
+		                    "id": "live_id",
+		                    "type": "label",
+		                    "value": "",
+		                    "label": {
+		                        "en": "Xbox Live ID"
+		                    }
+		                }
+		            ]
+		        }
+		    ]
+	    }
+    ],
+    "flow": {
+	    "actions": [
+		    {
+			    "id": "power_on",
+			    "title": {
+				    "en": "Power on"
+			    },
+			    "args": [
+				    {
+					    "name": "device",
+					    "type": "device",
+					    "filter": "driver_id=xboxone"
+				    }
+			    ]
+		    }
+	    ]
+    }
+}
