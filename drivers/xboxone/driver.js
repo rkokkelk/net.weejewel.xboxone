@@ -2,7 +2,14 @@
 
 const XboxOn = require('xbox-on');
 
+const xbox_options = {
+    tries: 5,
+    delay: 1000,
+    waitForCallback: false
+  };
+
 class XboxDriver {
+
 
 	constructor() {
 
@@ -36,7 +43,7 @@ class XboxDriver {
 
 			try {
 				var xbox = new XboxOn( data.address, data.live_id );
-					xbox.powerOn( callback );
+				xbox.powerOn( xbox_options, callback );
 			} catch( err ) {
 				return callback( err );
 			}
@@ -83,7 +90,7 @@ class XboxDriver {
 
 		if( value === true ) {
 			try {
-				device.xbox.powerOn(( err ) => {
+				device.xbox.powerOn( xbox_options, ( err ) => {
 					if( err ) return callback( err );
 					return callback( null, true );
 				})
