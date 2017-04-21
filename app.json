@@ -1,13 +1,13 @@
 {
-    "id": "net.weejewel.xboxone",
+    "id": "eu.rkokkelk.xboxone",
     "name": {
         "en": "Xbox One"
     },
     "version": "1.0.0",
     "compatibility": "0.x || 1.x",
     "author": {
-        "name": "Emile Nijssen",
-        "email": "emilenijssen@gmail.com"
+        "name": "Roy Kokkelkoren",
+        "email": "roy.kokkelkoren@gmail.com"
     },
     "images": {
 	    "large": "/assets/images/large.png",
