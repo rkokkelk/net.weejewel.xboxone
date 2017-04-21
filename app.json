@@ -9,6 +9,18 @@
         "name": "Roy Kokkelkoren",
         "email": "roy.kokkelkoren@gmail.com"
     },
+    "contributors": {
+      "developers": [
+        {
+          "name": "Roy Kokkelkoren",
+          "email": "roy.kokkelkoren@gmail.com"
+        },
+        {
+          "name": "Emile Nijssen",
+          "email": "emilenijssen@gmail.com"
+        }
+      ]
+    },
     "images": {
 	    "large": "/assets/images/large.png",
 	    "small": "/assets/images/small.png"
