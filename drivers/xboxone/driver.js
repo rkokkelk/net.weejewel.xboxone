@@ -43,7 +43,10 @@ class XboxDriver {
 
 			try {
 				var xbox = new XboxOn( data.address, data.live_id );
-				xbox.powerOn( xbox_options, callback );
+				xbox.powerOn( xbox_options, ( err ) => {
+					if( err ) return callback( err );
+					return callback();
+        });
 			} catch( err ) {
 				return callback( err );
 			}
@@ -93,7 +96,7 @@ class XboxDriver {
 				device.xbox.powerOn( xbox_options, ( err ) => {
 					if( err ) return callback( err );
 					return callback( null, true );
-				})
+				});
 			} catch( err ) {
 				return callback( err );
 			}

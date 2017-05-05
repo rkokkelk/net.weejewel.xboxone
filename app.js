@@ -2,8 +2,7 @@
 
 function init() {
 
-	console.log( Homey.manifest.id, 'running...' );
-
+  Homey.log("XBoxOne is ready ");
 
 }
 
