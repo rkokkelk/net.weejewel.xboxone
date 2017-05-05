@@ -1,7 +1,8 @@
 {
     "id": "net.weejewel.xboxone",
     "name": {
-        "en": "Xbox One"
+        "en": "Xbox One",
+        "nl": "Xbox One"
     },
     "version": "1.1.0",
     "compatibility": "0.x || 1.x",
@@ -25,6 +26,10 @@
       "en": [
         "Xbox",
         "Xbox One"
+      ],
+      "nl": [
+        "Xbox",
+        "Xbox One"
       ]
     },
     "images": {
@@ -33,13 +38,15 @@
     },
     "category": [ "appliances" ],
     "description": {
-	    "en": "Power On your Xbox One"
+	    "en": "Power On your Xbox One",
+	    "nl": "Start je Xbox One"
     },
     "drivers": [
 	    {
 		    "id": "xboxone",
 		    "name": {
-			    "en": "Xbox One"
+			    "en": "Xbox One",
+			    "nl": "Xbox One"
 		    },
 		    "images": {
 			    "large": "/drivers/xboxone/assets/images/large.png",
@@ -68,7 +75,8 @@
 			    {
                     "type": "group",
                     "label": {
-                        "en": "Xbox One"
+                        "en": "Xbox One",
+                        "nl": "Xbox One"
                     },
                     "children": [
 		                {
@@ -80,7 +88,8 @@
 		                        "nl": "Adres"
 		                    },
 		                    "hint": {
-			                    "en": "On your Xbox, go to Settings > Network > Network Settings > Advanced Settings"
+			                    "en": "On your Xbox, go to Settings > Network > Network Settings > Advanced Settings",
+			                    "nl": "Op de Xbox, ga naar Opties > Netwerk > Netwerk instellingen > Geadvanceerde instellingen"
 		                    }
 		                },
 		                {
@@ -88,7 +97,8 @@
 		                    "type": "label",
 		                    "value": "",
 		                    "label": {
-		                        "en": "Xbox Live ID"
+		                        "en": "Xbox Live ID",
+		                        "nl": "Xbox Live ID"
 		                    }
 		                }
 		            ]
@@ -101,7 +111,8 @@
 		    {
 			    "id": "power_on",
 			    "title": {
-				    "en": "Power on"
+				    "en": "Power on",
+				    "nl": "Start"
 			    },
 			    "args": [
 				    {
