@@ -1,10 +1,11 @@
 {
     "id": "net.weejewel.xboxone",
+    "sdk": 2,
     "name": {
         "en": "Xbox One",
         "nl": "Xbox One"
     },
-    "version": "1.1.2",
+    "version": "2.0.1",
     "compatibility": "0.x || 1.x",
     "author": {
         "name": "Roy Kokkelkoren",
