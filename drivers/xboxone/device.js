@@ -35,22 +35,29 @@ class XboxDevice extends Homey.Device {
 	onCapabilityOnoff( value, opts, callback ) {
 		let settings = this.getSettings();
 
-		try {
+    if (value == true){
 
-			let xbox = new XboxOn( settings['address'], settings['live_id'] );
+      try {
 
-			xbox.powerOn( xbox_options, ( err ) => {
+        let xbox = new XboxOn( settings['address'], settings['live_id'] );
 
-				if( err ) return Promise.reject( err );
+        xbox.powerOn( xbox_options, ( err ) => {
 
-				// Then, emit a callback ( err, result )
-				callback();
-			});
+          if( err ) return Promise.reject( err );
 
-		} catch( err ) {
-		// or, return a Promise
-			return Promise.reject( err );
-		}
+          // Then, emit a callback ( err, result )
+          callback();
+        });
+
+      } catch( err ) {
+      // or, return a Promise
+        return Promise.reject( err );
+      }
+
+    } else {
+
+      return Promise.reject( new Error('off_not_implemented') );
+    } 
 	}
 }
 
