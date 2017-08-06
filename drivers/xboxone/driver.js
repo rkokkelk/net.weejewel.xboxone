@@ -105,33 +105,6 @@ class XboxDriver {
 		}
 
 	}
-
-	_initDevice( device_data ) {
-
-		this.getSettings( device_data, ( err, settings ) => {
-			if( err ) return console.error(err);
-
-			this._devices[ device_data.live_id ] = {
-				xbox: new XboxOn( settings.address, settings.live_id ),
-				state: {
-					onoff	: false
-				}
-			}
-		});
-	}
-
-	_uninitDevice( device_data ) {
-		delete this._devices[ device_data.live_id ];
-	}
-
-	_getDevice( device_data ) {
-		return this._devices[ device_data.live_id ] || new Error('invalid_device');
-	}
-
-	_onFlowActionPowerOn( callback, args, state ) {
-		this.capabilities.onoff.set( args.device, true, callback );
-	}
-
 }
 
 module.exports = ( new XboxDriver() );

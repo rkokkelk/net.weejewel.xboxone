@@ -73,7 +73,7 @@
 			    }
 		    ],
 		    "settings": [
-			    {
+						{
                     "type": "group",
                     "label": {
                         "en": "Xbox One",
@@ -106,23 +106,5 @@
 		        }
 		    ]
 	    }
-    ],
-    "flow": {
-	    "actions": [
-		    {
-			    "id": "power_on",
-			    "title": {
-				    "en": "Power on",
-				    "nl": "Start"
-			    },
-			    "args": [
-				    {
-					    "name": "device",
-					    "type": "device",
-					    "filter": "driver_id=xboxone"
-				    }
-			    ]
-		    }
-	    ]
-    }
+    ]
 }
