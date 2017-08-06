@@ -1,5 +1,6 @@
 "use strict";
 
+const Homey = require('homey');
 const XboxOn = require('xbox-on');
 
 const xbox_options = {
@@ -8,103 +9,67 @@ const xbox_options = {
     waitForCallback: false
   };
 
-class XboxDriver {
+class XboxDriver extends Homey.Driver {
 
-
-	constructor() {
-
-		this._devices = {};
-
-		this.init 					= this._onInit.bind(this);
-		this.pair 					= this._onPair.bind(this);
-		this.added 					= this._onAdded.bind(this);
-		this.deleted 				= this._onDeleted.bind(this);
-		this.settings 				= this._onSettings.bind(this);
-
-		this.capabilities 			= {};
-		this.capabilities.onoff 	= {};
-		this.capabilities.onoff.get = this._onCapabilitiesOnoffGet.bind(this);
-		this.capabilities.onoff.set = this._onCapabilitiesOnoffSet.bind(this);
-
-		Homey.manager('flow').on('action.power_on', this._onFlowActionPowerOn.bind(this));
-
+  onInit(){
+		// Register homey default capability onoff
+    this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this))
 	}
 
-	_onInit( devices_data, callback ) {
-
-		devices_data.forEach( this._initDevice.bind(this) );
-
-		callback( null, true );
-	}
-
-	_onPair( socket ) {
+	onPair( socket ) {
 
 		socket.on('validate', ( data, callback ) => {
 
 			try {
-				var xbox = new XboxOn( data.address, data.live_id );
+
+				let xbox = new XboxOn( data.address, data.live_id );
+
 				xbox.powerOn( xbox_options, ( err ) => {
-					if( err ) return callback( err );
-					return callback();
+
+					if( err ) return Promise.reject( err );
+
+					// Then, emit a callback ( err, result )
+					callback();
         });
+
 			} catch( err ) {
-				return callback( err );
+				return Promise.reject( err );
 			}
 
-		})
-
+		});
 	}
 
-	_onAdded( device_data ) {
-		this._initDevice( device_data );
+	// this method is called when the Device is added
+	onAdded() {
+			this.log('xbox added');
 	}
 
-	_onDeleted( device_data ) {
-		this._uninitDevice( device_data );
+	// this method is called when the Device is deleted
+	onDeleted() {
+			this.log('device deleted');
 	}
 
-	_onSettings( device_data, newSettingsObj, oldSettingsObj, changedKeysArr, callback ) {
+	// this method is called when the Device has requested a state change (turned on or off)
+	onCapabilityOnoff( value, opts, callback ) {
+		let settings = this.getSettings();
 
-		var device = this._getDevice( device_data );
-		if( device instanceof Error ) return callback( device );
+		try {
 
-		this._uninitDevice( device_data );
-		this._initDevice( device_data );
+			let xbox = new XboxOn( settings['address'], settings['live_id'] );
 
-		callback( null, true );
+			xbox.powerOn( xbox_options, ( err ) => {
 
-	}
+				if( err ) return Promise.reject( err );
 
-	_onCapabilitiesOnoffGet( device_data, callback ) {
+				// Then, emit a callback ( err, result )
+				callback();
+			});
 
-		var device = this._getDevice( device_data );
-		if( device instanceof Error ) return callback( device );
-
-		return callback( null, device.state.onoff );
-
-	}
-
-	_onCapabilitiesOnoffSet( device_data, value, callback ) {
-
-		var device = this._getDevice( device_data );
-		if( device instanceof Error ) return callback( device );
-
-		device.state.onoff = value;
-
-		if( value === true ) {
-			try {
-				device.xbox.powerOn( xbox_options, ( err ) => {
-					if( err ) return callback( err );
-					return callback( null, true );
-				});
-			} catch( err ) {
-				return callback( err );
-			}
-		} else {
-			return callback( new Error('off_not_implemented') );
+		} catch( err ) {
+		// or, return a Promise
+			return Promise.reject( err );
 		}
-
 	}
 }
 
-module.exports = ( new XboxDriver() );
+module.exports = XboxDriver;
