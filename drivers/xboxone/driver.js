@@ -11,28 +11,28 @@ const xbox_options = {
 
 class XboxDriver extends Homey.Driver {
 
-	onPair( socket ) {
+  onPair( socket ) {
 
-		socket.on('validate', ( data, callback ) => {
+    socket.on('validate', ( data, callback ) => {
 
-			try {
+      try {
 
-				let xbox = new XboxOn( data.address, data.live_id );
+        let xbox = new XboxOn( data.address, data.live_id );
 
-				xbox.powerOn( xbox_options, ( err ) => {
+        xbox.powerOn( xbox_options, ( err ) => {
 
-					if( err ) return Promise.reject( err );
+          if( err ) return Promise.reject( err );
 
-					// Then, emit a callback ( err, result )
-					callback();
+          // Then, emit a callback ( err, result )
+          callback();
         });
 
-			} catch( err ) {
-				return Promise.reject( err );
-			}
+      } catch( err ) {
+        return Promise.reject( err );
+      }
 
-		});
-	}
+    });
+  }
 
 }
 

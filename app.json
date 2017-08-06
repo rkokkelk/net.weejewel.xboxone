@@ -34,77 +34,77 @@
       ]
     },
     "images": {
-	    "large": "/assets/images/large.png",
-	    "small": "/assets/images/small.png"
+      "large": "/assets/images/large.png",
+      "small": "/assets/images/small.png"
     },
     "category": [ "appliances" ],
     "description": {
-	    "en": "Power On your Xbox One",
-	    "nl": "Start je Xbox One"
+      "en": "Power On your Xbox One",
+      "nl": "Start je Xbox One"
     },
     "drivers": [
-	    {
-		    "id": "xboxone",
-		    "name": {
-			    "en": "Xbox One",
-			    "nl": "Xbox One"
-		    },
-		    "images": {
-			    "large": "/drivers/xboxone/assets/images/large.png",
-			    "small": "/drivers/xboxone/assets/images/small.png"
-		    },
-		    "class": "other",
-		    "capabilities": [ "onoff" ],
-		    "mobile": {
-			    "components": [
-				    {
-					    "id": "icon",
-					    "capabilities": [ "onoff" ]
-				    },
-				    {
-					    "id": "toggle",
-					    "capabilities": [ "onoff" ]
-				    }
-			    ]
-		    },
-		    "pair": [
-			    {
-				    "id": "index"
-			    }
-		    ],
-		    "settings": [
-						{
+      {
+        "id": "xboxone",
+        "name": {
+          "en": "Xbox One",
+          "nl": "Xbox One"
+        },
+        "images": {
+          "large": "/drivers/xboxone/assets/images/large.png",
+          "small": "/drivers/xboxone/assets/images/small.png"
+        },
+        "class": "other",
+        "capabilities": [ "onoff" ],
+        "mobile": {
+          "components": [
+            {
+              "id": "icon",
+              "capabilities": [ "onoff" ]
+            },
+            {
+              "id": "toggle",
+              "capabilities": [ "onoff" ]
+            }
+          ]
+        },
+        "pair": [
+          {
+            "id": "index"
+          }
+        ],
+        "settings": [
+            {
                     "type": "group",
                     "label": {
                         "en": "Xbox One",
                         "nl": "Xbox One"
                     },
                     "children": [
-		                {
-		                    "id": "address",
-		                    "type": "text",
-		                    "value": "",
-		                    "label": {
-		                        "en": "Address",
-		                        "nl": "Adres"
-		                    },
-		                    "hint": {
-			                    "en": "On your Xbox, go to Settings > Network > Network Settings > Advanced Settings",
-			                    "nl": "Op de Xbox, ga naar Opties > Netwerk > Netwerk instellingen > Geadvanceerde instellingen"
-		                    }
-		                },
-		                {
-		                    "id": "live_id",
-		                    "type": "label",
-		                    "value": "",
-		                    "label": {
-		                        "en": "Xbox Live ID",
-		                        "nl": "Xbox Live ID"
-		                    }
-		                }
-		            ]
-		        }
-		    ]
-	    }
+                    {
+                        "id": "address",
+                        "type": "text",
+                        "value": "",
+                        "label": {
+                            "en": "Address",
+                            "nl": "Adres"
+                        },
+                        "hint": {
+                          "en": "On your Xbox, go to Settings > Network > Network Settings > Advanced Settings",
+                          "nl": "Op de Xbox, ga naar Opties > Netwerk > Netwerk instellingen > Geadvanceerde instellingen"
+                        }
+                    },
+                    {
+                        "id": "live_id",
+                        "type": "label",
+                        "value": "",
+                        "label": {
+                            "en": "Xbox Live ID",
+                            "nl": "Xbox Live ID"
+                        }
+                    }
+                ]
+            }
+        ]
+      }
     ]
 }

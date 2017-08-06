@@ -5,7 +5,7 @@ const Homey = require('homey');
 class XboxOneApp extends Homey.App {
   
   onInit() {
-		this.log("XBoxOne is ready ");
+    this.log("XBoxOne is ready ");
   }
   
 }

@@ -17,23 +17,23 @@ class XboxDevice extends Homey.Device {
     this.log('name:', this.getName());
     this.log('class:', this.getClass());
 
-		// Register homey default capability onoff
+    // Register homey default capability onoff
     this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this))
-	}
+  }
 
-	// this method is called when the Device is added
-	onAdded() {
-			this.log('xbox added');
-	}
+  // this method is called when the Device is added
+  onAdded() {
+      this.log('xbox added');
+  }
 
-	// this method is called when the Device is deleted
-	onDeleted() {
-			this.log('device deleted');
-	}
+  // this method is called when the Device is deleted
+  onDeleted() {
+      this.log('device deleted');
+  }
 
-	// this method is called when the Device has requested a state change (turned on or off)
-	onCapabilityOnoff( value, opts, callback ) {
-		let settings = this.getSettings();
+  // this method is called when the Device has requested a state change (turned on or off)
+  onCapabilityOnoff( value, opts, callback ) {
+    let settings = this.getSettings();
 
     if (value == true){
 
@@ -58,7 +58,7 @@ class XboxDevice extends Homey.Device {
 
       return Promise.reject( new Error('off_not_implemented') );
     } 
-	}
+  }
 }
 
 module.exports = XboxDevice;
