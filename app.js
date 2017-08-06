@@ -1,9 +1,13 @@
 "use strict";
 
-function init() {
+const Homey = require('homey');
 
-  Homey.log("XBoxOne is ready ");
-
+class XboxOneApp extends Homey.App {
+  
+  onInit() {
+		this.log("XBoxOne is ready ");
+  }
+  
 }
 
-module.exports.init = init;
+module.exports = XboxOneApp; 
