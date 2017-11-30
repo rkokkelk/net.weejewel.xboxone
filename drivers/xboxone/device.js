@@ -18,7 +18,7 @@ class XboxDevice extends Homey.Device {
     this.log('class:', this.getClass());
 
     // Register homey default capability onoff
-    this.registerCapabilityListener('onoff', onCapabilityOnoff);
+    this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
     
   }
 
