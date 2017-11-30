@@ -106,5 +106,23 @@
             }
         ]
       }
-    ]
+    ],
+    "flow": {
+      "actions": [
+          {
+          "id": "turn_on",
+          "title": {
+              "en": "Start the Xbox One.",
+              "nl": "Start de Xbox One."
+          },
+          "args": [
+            {
+              "name": "xbox",
+              "type": "device",
+              "filter": "driver_id=xboxone"
+            }
+          ]
+        }
+      ]
+    }
 }

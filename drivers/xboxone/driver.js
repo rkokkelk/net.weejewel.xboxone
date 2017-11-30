@@ -1,4 +1,4 @@
-"use strict";
+"use strict"; 
 
 const Homey = require('homey');
 const XboxOn = require('xbox-on');
@@ -11,11 +11,34 @@ const xbox_options = {
 
 class XboxDriver extends Homey.Driver {
 
+  onInit() {
+    this.log("onInit XboxDriver");
+
+    this._initFlow();
+  }
+
+  _initFlow(){
+    this.log("init Flows");
+    
+    // Register turn_on Flow action
+    let turnXboxOn = new Homey.FlowCardAction('turn_on');
+    turnXboxOn
+      .register()
+      .registerRunListener(( args, state ) => {
+        this.log("Running flow turn_on");
+
+        args.xbox.onCapabilityOnoff(true, '');
+      });
+  }
+
+
   onPair( socket ) {
+    this.log("onPair");
 
     socket.on('validate', ( data, callback ) => {
 
       try {
+        this.log("Validating new XboxOne");
 
         let xbox = new XboxOn( data.address, data.live_id );
 
