@@ -35,8 +35,8 @@ class XboxDevice extends Homey.Device {
   // this method is called when the Device has requested a state change (turned on or off)
   onCapabilityOnoff( value, opts, callback) {
     this.log("Turning Onoff: "+value);
+
     let settings = this.getSettings();
-    this.log("Got settings");
 
     if (value == true){
 
@@ -49,23 +49,23 @@ class XboxDevice extends Homey.Device {
 
           if( err ) {
             this.log('Xbox powerOn failed: ', err)
-            return callback( err);
+            return Promise.reject( err );
           }
 
           // Then, emit a callback ( err, result )
           this.log('Xbox powerOn succeeded')
-          callback( null );
+          return Promise.resolve();
         });
 
       } catch( err ) {
         // or, return a Promise
         this.log('Xbox powerOn unknown error: ', err)
-        return callback( err);
+        return Promise.reject( err );
       }
 
     } else {
       this.log('Xbox tried powerOff')
-      return callback( new Error('off_not_implemented'));
+      return Promise.reject( new Error('off_not_implemented') );
     } 
   }
 }
