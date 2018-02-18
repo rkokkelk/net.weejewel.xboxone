@@ -28,6 +28,7 @@ class XboxDriver extends Homey.Driver {
         this.log("Running flow turn_on");
 
         args.xbox.triggerCapabilityListener('onoff', true);
+        return Promise.resolve();
       });
   }
 

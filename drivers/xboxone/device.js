@@ -4,9 +4,9 @@ const Homey = require('homey');
 const XboxOn = require('xbox-on');
 
 const xbox_options = {
-    tries: 5,
+    tries: 10,
     delay: 1000,
-    waitForCallback: false
+    waitForCallback: true
 };
 
 class XboxDevice extends Homey.Device {
